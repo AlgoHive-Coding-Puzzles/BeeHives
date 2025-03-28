@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Use Compile Puzzles Action
+      - name: Use Compile Puzzles Action (BeeToFlow)
         uses: AlgoHive-Coding-Puzzles/BeeToFlow@v0.0.1
         with:
           target-directories: "B1, B2"
