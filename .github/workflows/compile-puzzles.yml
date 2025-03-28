@@ -22,6 +22,6 @@ jobs:
         with:
           name: compiled-puzzles
           path: |
-            out/Catalog1.tar
-            out/Catalog2.tar
+            out/B1.tar
+            out/B2.tar
           retention-days: 7
