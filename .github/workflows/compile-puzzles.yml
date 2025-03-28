@@ -15,4 +15,13 @@ jobs:
       - name: Use Compile Puzzles Action
         uses: AlgoHive-Coding-Puzzles/BeeToFlow@v0.0.1
         with:
-          target-directories: "puzzles, challenges, levels"
+          target-directories: "B1, B2"
+
+      - name: Upload Compiled Files as Artifactories
+        uses: actions/upload-artifact@v2
+        with:
+          name: compiled-puzzles
+          path: |
+            out/Catalog1.tar
+            out/Catalog2.tar
+          retention-days: 7
