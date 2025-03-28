@@ -18,7 +18,7 @@ jobs:
           target-directories: "B1, B2"
 
       - name: Upload Compiled Files as Artifactories
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: compiled-puzzles
           path: |
