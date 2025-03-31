@@ -15,12 +15,15 @@ class Forge:
         return lines
     
     def generate_line(self, index: int) -> str:
+        left = random.randint(1, 20)
+        right = random.randint(left, 20)  # Toujours >= left
+        return f"{left} {right}"
         return str(random.randint(0, 100))
-
+    
 if __name__ == '__main__':
     lines_count = int(sys.argv[1])
     unique_id = sys.argv[2]
     forge = Forge(lines_count, unique_id)
     lines = forge.run()
     with open('input.txt', 'w') as f:
-        f.write('\n'.join(lines))
+        f.write('\n'.join(lines) + '\n')

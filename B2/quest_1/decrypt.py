@@ -3,7 +3,7 @@ class Decrypt:
         self.lines = lines
         
     def run(self):
-        return len(self.lines)
+        return sum(int(line.strip()) for line in self.lines)
     
 if __name__ == '__main__':
     with open('input.txt') as f:

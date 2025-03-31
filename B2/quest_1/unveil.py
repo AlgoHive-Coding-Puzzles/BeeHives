@@ -3,7 +3,7 @@ class Unveil:
         self.lines = lines
         
     def run(self):
-        return len(self.lines) ** 2
+        return sum(int(num.strip()) if i % 2 == 0 else -int(num.strip()) for i, num in enumerate(self.lines))
     
 if __name__ == '__main__':
     with open('input.txt') as f:

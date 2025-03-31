@@ -1,0 +1,52 @@
+<article>
+  <h2>--- Quest 5 Part 2 - Find All Pairs Efficiently Using a Hash Set ---</h2>
+
+  <div>
+    <p>[ EXPLANATION ]</p>
+    <p>
+      Dans cette étape, vous devez résoudre le même problème qu'auparavant :
+      trouver toutes les paires `(x, y)` où `x + y = target`. Cependant, vous
+      devez maintenant implémenter une solution plus efficace en utilisant une
+      structure de données comme un ensemble (hash set).
+    </p>
+    <p>
+      Cette solution vous permettra de résoudre le problème en un temps bien
+      plus court, avec une complexité temporelle de O(n).
+    </p>
+    <p><br /><br />Exemple:</p>
+
+    <code>
+      <strong>Input:</strong><br />
+      Liste de nombres: 1 3 7 9 2 5<br />
+      Somme cible: 10
+    </code>
+
+    <br />Traitement optimisé avec un hash set:<br />
+
+    <code>
+      Parcours: 1 → Cherche 9 → Pas trouvé, ajoute 1 au hash set<br />
+      Parcours: 3 → Cherche 7 → Pas trouvé, ajoute 3 au hash set<br />
+      Parcours: 7 → Cherche 3 → Trouvé! Ajoute la paire (3, 7)<br />
+      Parcours: 9 → Cherche 1 → Trouvé! Ajoute la paire (1, 9)<br />
+      Parcours: 2 → Cherche 8 → Pas trouvé, ajoute 2 au hash set<br />
+      Parcours: 5 → Cherche 5 → Trouvé! Ajoute la paire (5, 5)
+    </code>
+
+    <div><br /></div>
+
+    <div>Sortie attendue :</div>
+
+    <div>
+      <code>[(1, 9), (3, 7), (5, 5)]</code><br />
+      <p>
+        <span>
+          Votre programme doit retourner une liste de tuples, où chaque tuple
+          contient les deux nombres qui s'additionnent pour donner la somme
+          cible. Les tuples doivent être triés du plus petit premier élément au
+          plus grand, et les nombres dans chaque tuple doivent être ordonnés du
+          plus petit au plus grand.
+        </span>
+      </p>
+    </div>
+  </div>
+</article>
