@@ -11,7 +11,7 @@ class Forge:
     def run(self) -> list:
         random.seed(self.unique_id)
         # Generate a grid of characters with hidden words
-        grid_size = min(max(50, self.lines_count), 50)  # Grid size between 30 and 30
+        grid_size = 50
         grid = []
         
         # Generate the grid filled with random characters
@@ -25,14 +25,15 @@ class Forge:
         directions = [(0, 1), (1, 0), (1, 1), (1, -1)]  # right, down, diagonal down-right, diagonal down-left
         
         # the count of word we want to hide
-        words_to_hide_count = random.randint(1, 50)
+        words_to_hide_count = random.randint(30, 200)
+        print(words_to_hide_count)
         # Try to place each word in the grid
         for i in range(words_to_hide_count):
             # Randomly select a word to hide
             word = random.choice(words_to_hide)
                 
             # Try multiple times to place the word
-            for attempt in range(50):
+            for attempt in range(100):
                 direction = random.choice(directions)
                 dx, dy = direction
                 

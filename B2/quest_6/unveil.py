@@ -52,7 +52,6 @@ class Unveil:
         for word, _, _, _ in found_words:
             score += len(word) * 10
         
-        print(found_words)
         return score
 
 if __name__ == '__main__':
