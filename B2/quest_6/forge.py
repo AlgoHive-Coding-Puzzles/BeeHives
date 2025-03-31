@@ -11,7 +11,7 @@ class Forge:
     def run(self) -> list:
         random.seed(self.unique_id)
         # Generate a grid of characters with hidden words
-        grid_size = min(max(10, self.lines_count), 20)  # Grid size between 10 and 20
+        grid_size = min(max(50, self.lines_count), 50)  # Grid size between 30 and 30
         grid = []
         
         # Generate the grid filled with random characters
@@ -24,10 +24,12 @@ class Forge:
         hidden_words = []
         directions = [(0, 1), (1, 0), (1, 1), (1, -1)]  # right, down, diagonal down-right, diagonal down-left
         
+        # the count of word we want to hide
+        words_to_hide_count = random.randint(1, 50)
         # Try to place each word in the grid
-        for word in words_to_hide:
-            if len(hidden_words) >= 3:  # Limit to 3 hidden words
-                break
+        for i in range(words_to_hide_count):
+            # Randomly select a word to hide
+            word = random.choice(words_to_hide)
                 
             # Try multiple times to place the word
             for attempt in range(50):
@@ -66,7 +68,7 @@ class Forge:
                         hidden_words.append((word, start_x, start_y, "right" if dx == 0 else "down" if dy == 0 else "diagonal"))
                         break
         
-        return grid, hidden_words
+        return grid
     
     def generate_line(self, index: int) -> str:
         return str(random.randint(0, 100))
@@ -75,11 +77,6 @@ if __name__ == '__main__':
     lines_count = int(sys.argv[1])
     unique_id = sys.argv[2]
     forge = Forge(lines_count, unique_id)
-    grid, hidden_words = forge.run()
+    lines = forge.run()
     with open('input.txt', 'w') as f:
-        f.write(str(len(grid)) + '\n')  # Write grid size
-        for row in grid:
-            f.write(row + '\n')  # Write each row of the grid
-        f.write(str(len(hidden_words)) + '\n')  # Write number of hidden words
-        for word, x, y, direction in hidden_words:
-            f.write(f"{word} {x} {y} {direction}\n")  # Write word info
+        f.write('\n'.join(lines) + '\n')
