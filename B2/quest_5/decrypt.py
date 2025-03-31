@@ -7,11 +7,8 @@ class Decrypt:
     def run(self):
         possible = {'red': 12, 'green': 13, 'blue': 14}
         total = 0
-        print(self.lines)
         for id, game in enumerate(self.lines, start=1):
-            print(game)
             for n, color in re.findall(r'(\d+) (red|green|blue)', game):
-                print(f"n: {n}, color: {color}")
                 if possible[color] < int(n):
                     break
             else:
