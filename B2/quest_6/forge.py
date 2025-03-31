@@ -26,7 +26,6 @@ class Forge:
         
         # the count of word we want to hide
         words_to_hide_count = random.randint(30, 200)
-        print(words_to_hide_count)
         # Try to place each word in the grid
         for i in range(words_to_hide_count):
             # Randomly select a word to hide
