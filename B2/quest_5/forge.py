@@ -24,6 +24,8 @@ class Forge:
         # Shuffle the numbers to make it appear random
         random.shuffle(numbers)
         
+        numbers.insert("Target: ", target)
+        
         return numbers, target
     
     def generate_line(self) -> str:

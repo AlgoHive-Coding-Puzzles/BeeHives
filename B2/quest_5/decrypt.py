@@ -6,7 +6,7 @@ class Decrypt:
         seen = set()
         pairs = []
         for num in self.lines:
-            complement = self.target - num
+            complement = self.lines[0] - num
             if complement in seen:
                 pairs.append((min(num, complement), max(num, complement)))  # Ensure no duplicates
             seen.add(num)
@@ -14,8 +14,7 @@ class Decrypt:
 
 if __name__ == '__main__':
     with open('input.txt') as f:
-        numbers = list(map(int, f.readline().split()))
-        target = int(f.readline())
-    decrypt = Decrypt(numbers, target)
+        lines = f.readlines()
+    decrypt = Decrypt(lines)
     solution = decrypt.run()
     print(solution)
