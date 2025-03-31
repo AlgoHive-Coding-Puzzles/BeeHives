@@ -3,40 +3,17 @@ class Decrypt:
         self.lines = lines
 
     def run(self):
-        # For the first part, we'll only find words horizontally and vertically
-        found_words = []
+        target = int(self.lines[0].split(": ")[1])
+        # each lines looks like "(x, y)"
         
-        # Parse the grid
-        self.grid = []
-        for line in self.lines:
-            if isinstance(line, str):
-                self.grid.append(line.strip())
-            else:
-                self.grid.append(line)
+        result = []
+        for line in self.lines[1:]:
+            x, y = line.strip()[1:-1].split(", ")
+            if int(x) + int(y) == target:
+                result.append((x, y))
+                    
+        return len(result)
         
-        # Search horizontally
-        for i in range(len(self.grid)):
-            for word in ["python", "algorithm", "puzzle", "coding", "search"]:
-                row = self.grid[i]
-                if word in row:
-                    found_words.append((word, i + 1, row.index(word) + 1, "right"))
-                # Also check reversed
-                rev_word = word[::-1]
-                if rev_word in row:
-                    found_words.append((rev_word, i + 1, row.index(rev_word) + 1, "left"))
-        
-        # Search vertically
-        for j in range(len(self.grid[0]) if self.grid else 0):
-            col = ''.join(self.grid[i][j] for i in range(len(self.grid)) if j < len(self.grid[i]))
-            for word in ["python", "algorithm", "puzzle", "coding", "search"]:
-                if word in col:
-                    found_words.append((word, col.index(word) + 1, j + 1, "down"))
-                # Also check reversed
-                rev_word = word[::-1]
-                if rev_word in col:
-                    found_words.append((rev_word, col.index(rev_word) + 1, j + 1, "up"))
-        
-        return len(found_words)
 
 if __name__ == '__main__':
     with open('input.txt') as f:

@@ -1,6 +1,7 @@
 # forge.py - Génère input.txt
 import sys
 import random
+import string
 
 class Forge:
     def __init__(self, lines_count: int, unique_id: str = None):
@@ -10,12 +11,13 @@ class Forge:
     def run(self) -> list:
         random.seed(self.unique_id)
         lines = []
-        for _ in range(self.lines_count):
-            lines.append(self.generate_line(_))
+        lines.append(self.generate_line(1))
+        
         return lines
     
     def generate_line(self, index: int) -> str:
-        return str(random.randint(0, 100))
+        # Print 40 characters randomly picked from ('<' and '>')
+        return ''.join(random.choices(['<', '>'], k=self.lines_count))
 
 if __name__ == '__main__':
     lines_count = int(sys.argv[1])

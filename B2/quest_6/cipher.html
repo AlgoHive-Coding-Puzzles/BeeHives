@@ -1,53 +1,34 @@
 <article>
-  <h2>--- Quest 6 Part 1 - Word Search: Horizontal & Vertical ---</h2>
+  <h2>--- Quest 6 Part 1 - Find All Pairs That Sum to Target ---</h2>
 
-  <div>
     <p>[ EXPLANATION ]</p>
     <p>
-      Dans cette première partie, vous recevrez une grille de caractères qui
-      contient des mots cachés. Votre tâche est d'écrire un programme qui trouve
-      tous les mots cachés dans les directions horizontale et verticale.
-    </p>
-    <p>
-      Les mots à rechercher sont : "python", "algorithm", "puzzle", "coding",
-      "search". Vous devez compter combien de ces mots apparaissent dans la
-      grille (dans les directions horizontale et verticale uniquement).
+      Dans ce puzzle, nous vous fournissons une liste de nombres et une somme
+      cible. Vous devez trouver toutes les paires `(x, y)` où `x + y = target`.
     </p>
     <p><br /><br />Exemple:</p>
 
     <code>
-      abcde<br />
-      <strong>pyth</strong>z<br />
-      pohni<br />
-      <strong>s</strong>btdg<br />
-      <strong>e</strong>gchi<br />
-      <strong>a</strong>fzku<br />
-      <strong>r</strong>cyjl<br />
-      <strong>c</strong>mqxp<br />
-      <strong>h</strong>rwvb<br />
+      Objectif: 91<br />
+      (6, 33)<br />
+      (66, 25)<br />
+      (72, 19)
     </code>
 
-    <br /><strong>Traitement:</strong><br />
+    <br />Traitement:<br />
 
     <code>
-      "python" commence à (1,0) et va vers la droite (horizontalement) - trouvé
-      partiellement<br />
-      "search" commence à (3,0) et va vers le bas (verticalement) - trouvé
-      complètement
+      Étape: 1 → (6 + 33) = 85 → Pas trouvé<br />
+      Étape: 2 → (66 + 25) = 91 → Trouvé! Ajoute la paire (66, 25)<br />
+      Étape: 3 → (72 + 19) = 91 → Trouvé! Ajoute la paire (72, 19)
     </code>
-
-    <p>
-      Seul "search" est complètement trouvé (direction verticale), donc la
-      réponse est 1.
-    </p>
 
     <div><br /></div>
 
-    <div>Sortie attendue: 1</div>
+    <div>Sortie attendue : 2</div>
 
-    <p>
-      Retournez le nombre total de mots trouvés dans les directions horizontale
-      et verticale.
-    </p>
+      <p>
+        [TEXT]. Affichez la somme totale des paires trouvées.
+      </p>
   </div>
 </article>
