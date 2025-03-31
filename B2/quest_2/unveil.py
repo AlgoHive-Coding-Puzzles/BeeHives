@@ -1,6 +1,6 @@
 class Unveil:
     def __init__(self, lines: list):
-        self.lines = lines  # Init inchangé
+        self.lines = lines
 
     def run(self):
         left_column = set()
