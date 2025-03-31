@@ -10,16 +10,18 @@
     <p><br /><br />Exemple:</p>
 
     <code>
-      Liste: 1 3 7 9 2 5<br />
-      Somme cible: 10
+      Objectif: 91<br />
+      (6, 33)<br />
+      (66, 25)<br />
+      (72, 19)
     </code>
 
     <br />Traitement:<br />
 
     <code>
-      (1, 9)<br />
-      (3, 7)<br />
-      (5, 5)
+      Étape: 1 → (6 + 33) = 85 → Pas trouvé<br />
+      Étape: 2 → (66 + 25) = 91 → Trouvé! Ajoute la paire (66, 25)<br />
+      Étape: 3 → (72 + 19) = 91 → Trouvé! Ajoute la paire (72, 19)
     </code>
 
     <div><br /></div>
@@ -27,11 +29,9 @@
     <div>Sortie attendue :</div>
 
     <div>
-      <code> Paires: (1, 9), (3, 7), (5, 5) </code><br />
+      <code> 2 </code><br />
       <p>
-        <span>
-          [TEXT]. Affichez toutes les paires qui ajoutent à la somme cible.
-        </span>
+        <span> [TEXT]. Affichez la somme totale des paires trouvées. </span>
       </p>
     </div>
   </div>
