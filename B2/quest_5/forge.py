@@ -24,9 +24,10 @@ class Forge:
         # Shuffle the numbers to make it appear random
         random.shuffle(numbers)
         
-        numbers.insert("Target: ", target)
+        lines = ["Objectif : " + str(target)]
+        lines.append(map(str, numbers))
         
-        return numbers, target
+        return lines
     
     def generate_line(self) -> str:
         return str(random.randint(1, 100))
