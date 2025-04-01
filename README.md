@@ -39,5 +39,3 @@ Après des changements dans le projet, il faut stager les fichiers, créer un me
 HTML est un langage de balisage. Chaque balise ouvrante doit être fermée par une balise fermante. Par exemple, `<p>` est la balise ouvrante et `</p>` est la balise fermante. Il existe aussi des balises auto-fermantes comme `<br />`. Ces balises n'ont pas besoin de balise fermante.
 
 > Si en faisant un CTRL+S, et que l'extension de formattage (Prettier) ne formate pas le code, c'est qu'une balise n'est pas fermée correctement. Il faut donc vérifier le code HTML.
-
-Test
