@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "B2/**"
 
 jobs:
   test-action:
