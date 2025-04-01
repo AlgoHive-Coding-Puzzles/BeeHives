@@ -11,14 +11,15 @@ class Forge:
     def run(self) -> list:
         random.seed(self.unique_id)
         lines = []
-        for _ in range(self.lines_count):
-            lines.append(self.generate_line())
+        for i in range(125):
+            line = self.generate_line(i)
+            lines.append(line)
+        
         return lines
     
-    def generate_line(self) -> str:
-        # Generate a random string of lowercase letters (length between 5 and 25)
-        length = random.randint(5, 25)
-        return ''.join(random.choices(string.ascii_lowercase, k=length))
+    def generate_line(self, index: int) -> str:
+        digits = ''.join(random.choices(string.digits, k=125))
+        return digits
 
 if __name__ == '__main__':
     lines_count = int(sys.argv[1])

@@ -1,32 +1,38 @@
 <article>
-  <h2>--- Quest 4 Part 2 - Multiply and Sum Common Factors ---</h2>
+  <h2>--- Quest 3 Part 2 - Longest Substring of Vowels ---</h2>
 
   <div>
     <p>[ EXPLANATION ]</p>
     <p>
-      Dans cette étape, vous devez trouver les facteurs communs des nouveaux
-      ensembles de nombres, puis multiplier ces facteurs ensemble. Ensuite, vous
-      devez additionner les produits des facteurs communs pour chaque paire.
+      Dans cette étape, pour chaque chaîne donnée, vous devez trouver la plus
+      longue sous-chaîne composée uniquement de voyelles (A, E, I, O, U). Vous
+      devez ensuite donner la longueur de cette sous-chaîne.
     </p>
     <p><br /><br />Exemple:</p>
 
     <code>
-      12 18<br />
-      15 25<br />
-      10 20
+      apple<br />
+      education<br />
+      science<br />
+      beautiful
     </code>
 
     <br />Traitement:<br />
 
-    <code
-      >(1 * 2 * 3 * 6) + (1 * 5) + (1 * 2 * 5 * 10) = 36 + 5 + 100 = 141</code
-    >
+    <code>
+      apple -> 1 voyelle consécutive (a, e)<br />
+      education -> 1 voyelle consécutive (e, u, a, i, o)<br />
+      science -> 1 voyelle consécutive (i, e, e)<br />
+      beautiful -> 3 voyelles consécutives (eau)<br />
+      <br />
+      beautiful contient la plus longue sous-chaîne de voyelles (eau) avec une
+      longueur de 3.
+    </code>
 
-    <div>Sortie attendue : 141</div>
+    <div>Sortie attendue : 3</div>
 
     <p>
-      [TEXT]. Quelle est la somme des produits des facteurs communs des nombres
-      donnés ?
+      [TEXT]. Quelle est la longueur de la plus longue sous-chaîne de voyelles ?
     </p>
   </div>
 </article>

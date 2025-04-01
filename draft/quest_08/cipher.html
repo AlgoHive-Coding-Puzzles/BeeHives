@@ -1,328 +1,53 @@
 <article>
-  <h2>--- Quest 8 Part 1 - Tetris Tower ---</h2>
+  <h2>--- Quest 7 Part 1 - Word Search: Horizontal & Vertical ---</h2>
 
   <div>
     <p>[ EXPLANATION ]</p>
-
     <p>
-      Il y a cinq types de composants qui ont les formes suivantes, où # est le
-      rocher et . est l'espace vide:
+      Dans cette première partie, vous recevrez une grille de caractères qui
+      contient des mots cachés. Votre tâche est d'écrire un programme qui trouve
+      tous les mots cachés dans les directions horizontale et verticale.
     </p>
+    <p>
+      Les mots à rechercher sont : "python", "algorithm", "puzzle", "coding",
+      "search". Vous devez compter combien de ces mots apparaissent dans la
+      grille (dans les directions horizontale et verticale uniquement).
+    </p>
+    <p><br /><br />Exemple:</p>
 
     <code>
-      ####<br />
-      <br />
-      .#.<br />
-      ###<br />
-      .#.<br />
-      <br />
-      ..#<br />
-      ..#<br />
-      ###<br />
-      <br />
-      #<br />
-      #<br />
-      #<br />
-      #<br />
-      <br />
-      ##<br />
-      ##
+      abcde<br />
+      <strong>pyth</strong>z<br />
+      pohni<br />
+      <strong>s</strong>btdg<br />
+      <strong>e</strong>gchi<br />
+      <strong>a</strong>fzku<br />
+      <strong>r</strong>cyjl<br />
+      <strong>c</strong>mqxp<br />
+      <strong>h</strong>rwvb<br />
+    </code>
+
+    <br /><strong>Traitement:</strong><br />
+
+    <code>
+      "python" commence à (1,0) et va vers la droite (horizontalement) - trouvé
+      partiellement<br />
+      "search" commence à (3,0) et va vers le bas (verticalement) - trouvé
+      complètement
     </code>
 
     <p>
-      Les composants tombent dans l'ordre indiqué ci-dessus: d'abord la forme -,
-      puis la forme +, et ainsi de suite. Une fois la fin de la liste atteinte,
-      le même ordre se répète: la forme - tombe en premier, sixième, onzième,
-      etc.
+      Seul "search" est complètement trouvé (direction verticale), donc la
+      réponse est 1.
     </p>
 
-    <br />
+    <div><br /></div>
+
+    <div>Sortie attendue: 1</div>
 
     <p>
-      Les composants ne pivotent pas, mais ils sont poussés par des bourrasques
-      de vent. Une analyse rapide révèle les effets du vent aura sur les
-      composants (votre input)
-    </p>
-
-    <p>Par exemple, supposons que ce soit le motif de bourrasques:</p>
-
-    <code>>>><<><>><<<>><>>><<<>>><<<><<<>><>><<>></code>
-
-    <br />
-
-    <p>
-      Dans l'analyse des bourrasques de vent, < signifie une poussée vers la
-      gauche, tandis que > signifie une poussée vers la droite. Le motif
-      ci-dessus signifie que les rafales pousseront un composant tombante vers
-      la droite, puis vers la droite, puis vers la droite, puis vers la gauche,
-      puis vers la gauche, puis vers la droite, et ainsi de suite. Si la fin de
-      la liste est atteinte, elle se répète.
-    </p>
-
-    <br />
-
-    <p>
-      L'espace entre les deux arbres est de 7 unités de large. Chaque composant
-      apparaît de sorte que son bord gauche est à deux unités du mur gauche et
-      son bord inférieur est à trois unités au-dessus du plus haut composant de
-      la pièce (ou du sol, s'il n'y en a pas).
-    </p>
-
-    <br />
-
-    <p>
-      Après qu'un composant soit apparu, il alterne entre être poussé par une
-      rafale d'une unité (dans la direction indiquée par le prochain symbole
-      dans le motif de rafale) et tomber d'une unité. Si un mouvement quelconque
-      devait faire en sorte qu'une partie du composant se déplace dans les murs,
-      le sol ou un composant déjà tombé, le mouvement ne se produit pas. Si un
-      mouvement vers le bas aurait fait en sorte qu'un composant tombant se
-      déplace dans le sol ou un composant déjà tombé, le composant tombant
-      s'arrête là où il est (ayant atterri sur quelque chose) et un nouveau
-      composant commence immédiatement à tomber.
-    </p>
-
-    <br />
-
-    <p>
-      On représente les composants tombant par @ et les composants arrêtés par
-      #. Le motif de rafale dans l'exemple ci-dessus se manifeste comme suit:
-    </p>
-
-    <pre>
-Le premier composant commence à tomber:
-|..@@@@.|
-|.......|
-|.......|
-|.......|
-+-------+
-
-La rafale de vent pousse le composant vers la droite:
-|...@@@@|
-|.......|
-|.......|
-|.......|
-+-------+
-
-Le composant tombe d'une unité:
-|...@@@@|
-|.......|
-|.......|
-+-------+
-
-La rafale de vent pousse le composant vers la droite, mais rien ne se passe:
-|...@@@@|
-|.......|
-|.......|
-+-------+
-
-Le composant tombe d'une unité:
-|...@@@@|
-|.......|
-+-------+
-
-La rafale de vent pousse le composant vers la droite, mais rien ne se passe:
-|...@@@@|
-|.......|
-+-------+
-
-Le composant tombe d'une unité:
-|...@@@@|
-+-------+
-
-Le vent pousse le composant vers la gauche:
-|..@@@@.|
-+-------+
-
-Le composant tombe d'une unité, ce qui le fait se stabiliser:
-|..####.|
-+-------+
-
-Un nouveau composant commence à tomber:
-|...@...|
-|..@@@..|
-|...@...|
-|.......|
-|.......|
-|.......|
-|..####.|
-+-------+
-    </pre>
-
-    <p>
-      Au moment où chacun des prochains composants commence à tomber, vous
-      verriez ceci:
-    </p>
-
-    <pre>
-        |..@....|
-|..@....|
-|..@....|
-|..@....|
-|.......|
-|.......|
-|.......|
-|..#....|
-|..#....|
-|####...|
-|..###..|
-|...#...|
-|..####.|
-+-------+
-
-|..@@...|
-|..@@...|
-|.......|
-|.......|
-|.......|
-|....#..|
-|..#.#..|
-|..#.#..|
-|#####..|
-|..###..|
-|...#...|
-|..####.|
-+-------+
-
-|..@@@@.|
-|.......|
-|.......|
-|.......|
-|....##.|
-|....##.|
-|....#..|
-|..#.#..|
-|..#.#..|
-|#####..|
-|..###..|
-|...#...|
-|..####.|
-+-------+
-
-|...@...|
-|..@@@..|
-|...@...|
-|.......|
-|.......|
-|.......|
-|.####..|
-|....##.|
-|....##.|
-|....#..|
-|..#.#..|
-|..#.#..|
-|#####..|
-|..###..|
-|...#...|
-|..####.|
-+-------+
-
-|....@..|
-|....@..|
-|..@@@..|
-|.......|
-|.......|
-|.......|
-|..#....|
-|.###...|
-|..#....|
-|.####..|
-|....##.|
-|....##.|
-|....#..|
-|..#.#..|
-|..#.#..|
-|#####..|
-|..###..|
-|...#...|
-|..####.|
-+-------+
-
-|..@....|
-|..@....|
-|..@....|
-|..@....|
-|.......|
-|.......|
-|.......|
-|.....#.|
-|.....#.|
-|..####.|
-|.###...|
-|..#....|
-|.####..|
-|....##.|
-|....##.|
-|....#..|
-|..#.#..|
-|..#.#..|
-|#####..|
-|..###..|
-|...#...|
-|..####.|
-+-------+
-
-|..@@...|
-|..@@...|
-|.......|
-|.......|
-|.......|
-|....#..|
-|....#..|
-|....##.|
-|....##.|
-|..####.|
-|.###...|
-|..#....|
-|.####..|
-|....##.|
-|....##.|
-|....#..|
-|..#.#..|
-|..#.#..|
-|#####..|
-|..###..|
-|...#...|
-|..####.|
-+-------+
-
-|..@@@@.|
-|.......|
-|.......|
-|.......|
-|....#..|
-|....#..|
-|....##.|
-|##..##.|
-|######.|
-|.###...|
-|..#....|
-|.####..|
-|....##.|
-|....##.|
-|....#..|
-|..#.#..|
-|..#.#..|
-|#####..|
-|..###..|
-|...#...|
-|..####.|
-+-------+
-    </pre>
-
-    <p>
-      Afin de prouver que votre simulation est précise, les drônes abeilles
-      veulent savoir quelle sera la hauteur de la ruche après que 1000
-      composants se soient stabilisés (mais avant que le 1001ème ne commence à
-      tomber). Dans cet exemple, la ruche de composants sera de 1520 unités de
-      haut.
-    </p>
-
-    <br />
-
-    <p>
-      Quelle sera la hauteur de la ruche après que 1000 composants se soient
-      stabilisés ?
+      Retournez le nombre total de mots trouvés dans les directions horizontale
+      et verticale.
     </p>
   </div>
 </article>

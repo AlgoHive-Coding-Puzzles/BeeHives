@@ -1,20 +1,58 @@
 <article>
-  <h2>--- Quest 8 Part 2 - More Tetris ---</h2>
+  <h2>--- Quest 7 Part 2 - Word Search: All Directions ---</h2>
 
   <div>
+    <p>[ EXPLANATION ]</p>
     <p>
-      Les drônes abeilles ne sont pas impressionnées par votre simulation. Ils
-      exigent de savoir quelle sera la hauteur de la tour après que
-      1000000000000 composants se soient arrêtés ! Ce n'est qu'alors qu'ils se
-      sentiront assez confiants pour passer à construire la ruche. Dans
-      l'exemple ci-dessus, la ruche mesurerait 1514285714288 unités de haut !
+      Dans cette seconde partie, vous devez étendre votre recherche pour inclure
+      toutes les directions possibles : horizontale, verticale, et diagonale
+      (dans les deux sens pour chaque direction).
     </p>
-
-    <br />
-
     <p>
-      Quelle sera la hauteur de la ruche après que 1000000000000 composants se
-      soient arrêtés ?
+      De plus, au lieu de simplement compter les mots, vous devrez calculer un
+      score basé sur les mots trouvés. Chaque mot trouvé rapporte 10 points par
+      lettre. Par exemple, "python" (6 lettres) rapporte 60 points.
     </p>
+    <p><br /><br />Exemple:</p>
+
+    <code>
+      abcdefghpdmfldo<br />
+      i<strong>p</strong>klmnopfodpff<strong>p</strong><br />
+      qr<strong>u</strong>vwxyzdpslaf<strong>y</strong><br />
+      pab<strong>z</strong>defghdpglf<strong>t</strong><br />
+      doij<strong>z</strong>lmnfkgoeo<strong>h</strong><br />
+      dirqr<strong>l</strong>tuvwxjfi<strong>o</strong><br />
+      djfiyz<strong>e</strong>bcdefur<strong>n</strong><br />
+      pfosjgh<strong>c</strong>jklmnuf<br />
+      ldpe<strong>coding</strong>stuvw<br />
+      <br />
+      Mots cachés: 2<br />
+      puzzle 2 2 diagonal (visible en diagonale descendante-droite)<br />
+      coding 9 5 horizontal (visible horizontalement)<br />
+      python 2 15 vertical (visible verticalement)<br />
+    </code>
+
+    <br /><strong>Traitement:</strong><br />
+
+    <code>
+      Recherche horizontale:<br />
+      - "python" n'est pas complètement visible horizontalement<br />
+      <br />
+      Recherche verticale:<br />
+      - Aucun mot trouvé complètement<br />
+      <br />
+      Recherche diagonale:<br />
+      - "puzzle" trouvé en diagonale descendante-droite commençant à (2,1) - 60
+      points (6 lettres × 10)
+    </code>
+
+    <div><br /></div>
+
+    <div>Sortie attendue: 60</div>
+
+    <code>
+      Seul "puzzle" est complètement trouvé (6 lettres × 10 points = 60).
+      Retournez le score total des mots trouvés dans toutes les directions.
+    </code>
   </div>
 </article>

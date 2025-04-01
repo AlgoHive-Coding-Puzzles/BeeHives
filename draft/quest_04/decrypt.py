@@ -3,17 +3,11 @@ class Decrypt:
         self.lines = lines
 
     def run(self):
-        total = 0
+        total_vowels = 0
+        vowels = "aeiou"
         for line in self.lines:
-            num1, num2 = map(int, line.split())
-            common_factors = self.get_common_factors(num1, num2)
-            total += sum(common_factors)
-        return total
-    
-    def get_common_factors(self, num1, num2):
-        factors1 = {i for i in range(1, num1 + 1) if num1 % i == 0}
-        factors2 = {i for i in range(1, num2 + 1) if num2 % i == 0}
-        return factors1 & factors2 
+            total_vowels += sum(1 for char in line if char in vowels)
+        return total_vowels
 
 if __name__ == '__main__':
     with open('input.txt') as f:

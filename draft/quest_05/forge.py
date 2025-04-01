@@ -10,25 +10,15 @@ class Forge:
     def run(self) -> list:
         random.seed(self.unique_id)
         lines = []
-        for _ in range(250):
-            lines.append(self.generate_line(_))
+        for _ in range(self.lines_count):
+            lines.append(self.generate_line()) 
         return lines
     
-    def generate_line(self, index: int) -> str:
-        # Pick a random number between 2 and 7 (inclusive)
-        subset_count = random.randint(2, 5)
-        subsets = [self.generate_subset() for _ in range(subset_count) ]
-        return f"Round {index + 1}: {'; '.join(subsets)}"
-        
-    def generate_subset(self) -> str:
-        colors = ['green', 'blue', 'red']
-        counts = [random.randint(0, 20) for _ in range(3)]
-        subset = []
-        for color, count in zip(colors, counts):
-            if count > 0:
-                subset.append(f"{count} {color}")
-        random.shuffle(subset)
-        return ', '.join(subset)
+    def generate_line(self) -> str:
+        # Randomly generate two numbers between 1 and 50
+        num1 = random.randint(1, 50)
+        num2 = random.randint(1, 50)
+        return f"{num1} {num2}"
 
 if __name__ == '__main__':
     lines_count = int(sys.argv[1])
@@ -36,4 +26,4 @@ if __name__ == '__main__':
     forge = Forge(lines_count, unique_id)
     lines = forge.run()
     with open('input.txt', 'w') as f:
-        f.write('\n'.join(lines))
+        f.write('\n'.join(lines) + '\n')

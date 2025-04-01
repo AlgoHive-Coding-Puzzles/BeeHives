@@ -1,26 +1,23 @@
-import re
-
 class Decrypt:
     def __init__(self, lines: list):
         self.lines = lines
-        
-    def run(self):
-        possible = {'red': 12, 'green': 13, 'blue': 14}
-        total = 0
-        for id, game in enumerate(self.lines, start=1):
-            for n, color in re.findall(r'(\d+) (red|green|blue)', game):
-                if possible[color] < int(n):
-                    break
-            else:
-                total += id
 
+    def run(self):
+        total = 0
+        for line in self.lines:
+            num1, num2 = map(int, line.split())
+            common_factors = self.get_common_factors(num1, num2)
+            total += sum(common_factors)
         return total
     
+    def get_common_factors(self, num1, num2):
+        factors1 = {i for i in range(1, num1 + 1) if num1 % i == 0}
+        factors2 = {i for i in range(1, num2 + 1) if num2 % i == 0}
+        return factors1 & factors2 
+
 if __name__ == '__main__':
     with open('input.txt') as f:
         lines = f.readlines()
     decrypt = Decrypt(lines)
     solution = decrypt.run()
     print(solution)
-    
-    

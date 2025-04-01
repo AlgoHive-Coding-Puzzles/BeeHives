@@ -11,15 +11,13 @@ class Forge:
     def run(self) -> list:
         random.seed(self.unique_id)
         lines = []
-        for i in range(125):
-            line = self.generate_line(i)
-            lines.append(line)
+        lines.append(self.generate_line(1))
         
         return lines
     
     def generate_line(self, index: int) -> str:
-        digits = ''.join(random.choices(string.digits, k=125))
-        return digits
+        # Print 40 characters randomly picked from ('<' and '>')
+        return ''.join(random.choices(['<', '>'], k=self.lines_count))
 
 if __name__ == '__main__':
     lines_count = int(sys.argv[1])

@@ -1,70 +1,28 @@
 <article>
-  <h2>--- Quest 5 Part 1 - Cube games ---</h2>
+  <h2>--- Quest 4 Part 1 - Common Factors Sum ---</h2>
 
-  <p>[ EXPLANATION ]</p>
+  <div>
+    <p>[ EXPLANATION ]</p>
+    <p>
+      Dans ce puzzle, chaque ligne contient deux entiers. Vous devez trouver les
+      facteurs communs des deux entiers, puis additionner ces facteurs.
+    </p>
+    <p><br /><br />Exemple:</p>
 
-  <p>
-    On va tirer des cubes au hasard et les affiche, puis on va les remettre dans
-    le sac. Il va faire ça plusieurs fois par jeu.
-  </p>
+    <code>
+      12 18<br />
+      15 25<br />
+      10 20
+    </code>
 
-  <br />
+    <br />Traitement:<br />
 
-  <p>
-    Vous jouez plusieurs jeux et enregistrez les informations de chaque jeu
-    (votre input). Chaque jeu est répertorié avec son numéro d'identification
-    (comme le 11 dans Jeu 11: ...) suivi d'une liste de sous-ensembles de cubes
-    qui ont été révélés du sac (comme 3 red, 5 green, 4 blue).
-  </p>
+    <code>
+      (1 + 2 + 3 + 6) + (1 + 5) + (1 + 2 + 5 + 10) = 12 + 6 + 18 = 36
+    </code>
 
-  <br />
+    <div>Sortie attendue : 36</div>
 
-  <p>
-    Par exemple, l'enregistrement de quelques jeux pourrait ressembler à ceci:
-  </p>
-
-  <code>
-    Round 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green<br />
-    Round 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue<br />
-    Round 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red<br />
-    Round 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red<br />
-    Round 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
-  </code>
-
-  <br />
-
-  <p>
-    Dans la partie 1, trois sets de cubes sont révélés du sac (puis remis dans
-    le sac). Le premier set est 3 cubes bleus et 4 cubes rouges; le deuxième set
-    est 1 cube rouge, 2 cubes verts et 6 cubes bleus; le troisième set est
-    seulement 2 cubes verts.
-  </p>
-
-  <br />
-
-  <p>
-    On aimerait savoir combien de jeux auraient été possibles si le sac
-    contenait seulement 12 cubes rouges, 13 cubes verts et 14 cubes bleus?
-  </p>
-
-  <br />
-
-  <p>
-    Dans l'exemple ci-dessus, les jeux 1, 2 et 5 auraient été possibles si le
-    sac avait été chargé avec cette configuration. Cependant, le jeu 3 aurait
-    été impossible car à un moment donné, l'elfe vous a montré 20 cubes rouges à
-    la fois; de même, le jeu 4 aurait également été impossible car l'elfe vous a
-    montré 15 cubes bleus à la fois. Si vous additionnez les ID des jeux qui
-    auraient été possibles, vous obtenez 8.
-  </p>
-
-  <br />
-
-  <p>
-    Déterminez quels jeux auraient été possibles si le sac avait été chargé avec
-    seulement 12 cubes rouges, 13 cubes verts et 14 cubes bleus. Quelle est la
-    somme des ID de ces jeux?
-  </p>
-
-  <p>[TEXT]. Affichez la somme totale des paires trouvées.</p>
+    <p>[TEXT]. Quelle est la somme des facteurs communs des nombres donnés ?</p>
+  </div>
 </article>

@@ -1,91 +1,328 @@
 <article>
-  <h2>--- Quest 9 Part 1 - HeatMap ---</h2>
+  <h2>--- Quest 8 Part 1 - Tetris Tower ---</h2>
 
   <div>
     <p>[ EXPLANATION ]</p>
 
     <p>
-      Vous avez une carte, votre input, qui donne des valeurs de température
-      pour cahque case de la carte.
+      Il y a cinq types de composants qui ont les formes suivantes, où # est le
+      rocher et . est l'espace vide:
+    </p>
+
+    <code>
+      ####<br />
       <br />
-      Par exemple:
-    </p>
-
-    <br />
-
-    <code>
-      2413432311323<br />
-      3215453535623<br />
-      3255245654254<br />
-      3446585845452<br />
-      4546657867536<br />
-      1438598798454<br />
-      4457876987766<br />
-      3637877979653<br />
-      4654967986887<br />
-      4564679986453<br />
-      1224686865563<br />
-      2546548887735<br />
-      4322674655533
-    </code>
-
-    <br />
-
-    <p>
-      Chaque case de la carte est une case de 1x1, et chaque valeur représente
-      la température de cette case.
-    </p>
-
-    <br />
-
-    <p>
-      Le point de départ est en haut à gauche de la carte, et le point d'arrivée
-      est en bas à droite de la carte. (Étant donné que vous commencez déjà dans
-      le bloc en haut à gauche, vous ne subissez pas de perte sur ce bloc à
-      moins que vous ne quittiez ce bloc et que vous y reveniez.)
-    </p>
-
-    <br />
-
-    <p>
-      Vous ne pouvez pas vous diriger sur une ligne droite pendant maximum 3
-      unités. Il faudra impérativement changer de direction (droite ou gauche) à
-      90 degrés. Vous ne pouvez pas vous déplacer en diagonale ou en arrière. En
-      arrivant sur un bloc, vous ne pouvez que tourner à gauche, droite ou aller
-      tout droit
-    </p>
-
-    <br />
-
-    <p>Dans cet exemple, le chemin le plus court est:</p>
-
-    <code>
-      2>>34^>>>1323<br />
-      32v>>>35v5623<br />
-      32552456v>>54<br />
-      3446585845v52<br />
-      4546657867v>6<br />
-      14385987984v4<br />
-      44578769877v6<br />
-      36378779796v><br />
-      465496798688v<br />
-      456467998645v<br />
-      12246868655&lt;v<br />
-      25465488877v5<br />
-      43226746555v&gt;
+      .#.<br />
+      ###<br />
+      .#.<br />
+      <br />
+      ..#<br />
+      ..#<br />
+      ###<br />
+      <br />
+      #<br />
+      #<br />
+      #<br />
+      #<br />
+      <br />
+      ##<br />
+      ##
     </code>
 
     <p>
-      Ce chemin ne fait jamais se déplacer plus de 3 cases à la fois, et
-      n'implique un coût de seulement 102
+      Les composants tombent dans l'ordre indiqué ci-dessus: d'abord la forme -,
+      puis la forme +, et ainsi de suite. Une fois la fin de la liste atteinte,
+      le même ordre se répète: la forme - tombe en premier, sixième, onzième,
+      etc.
     </p>
 
     <br />
 
     <p>
-      Sans se déplacer à plus de 3 cases à la fois dans la même direction,
-      trouvez le chemin le moins couteux entre le point de départ et le point
-      d'arrivée, et calculez le coût total de ce chemin.
+      Les composants ne pivotent pas, mais ils sont poussés par des bourrasques
+      de vent. Une analyse rapide révèle les effets du vent aura sur les
+      composants (votre input)
+    </p>
+
+    <p>Par exemple, supposons que ce soit le motif de bourrasques:</p>
+
+    <code>>>><<><>><<<>><>>><<<>>><<<><<<>><>><<>></code>
+
+    <br />
+
+    <p>
+      Dans l'analyse des bourrasques de vent, < signifie une poussée vers la
+      gauche, tandis que > signifie une poussée vers la droite. Le motif
+      ci-dessus signifie que les rafales pousseront un composant tombante vers
+      la droite, puis vers la droite, puis vers la droite, puis vers la gauche,
+      puis vers la gauche, puis vers la droite, et ainsi de suite. Si la fin de
+      la liste est atteinte, elle se répète.
+    </p>
+
+    <br />
+
+    <p>
+      L'espace entre les deux arbres est de 7 unités de large. Chaque composant
+      apparaît de sorte que son bord gauche est à deux unités du mur gauche et
+      son bord inférieur est à trois unités au-dessus du plus haut composant de
+      la pièce (ou du sol, s'il n'y en a pas).
+    </p>
+
+    <br />
+
+    <p>
+      Après qu'un composant soit apparu, il alterne entre être poussé par une
+      rafale d'une unité (dans la direction indiquée par le prochain symbole
+      dans le motif de rafale) et tomber d'une unité. Si un mouvement quelconque
+      devait faire en sorte qu'une partie du composant se déplace dans les murs,
+      le sol ou un composant déjà tombé, le mouvement ne se produit pas. Si un
+      mouvement vers le bas aurait fait en sorte qu'un composant tombant se
+      déplace dans le sol ou un composant déjà tombé, le composant tombant
+      s'arrête là où il est (ayant atterri sur quelque chose) et un nouveau
+      composant commence immédiatement à tomber.
+    </p>
+
+    <br />
+
+    <p>
+      On représente les composants tombant par @ et les composants arrêtés par
+      #. Le motif de rafale dans l'exemple ci-dessus se manifeste comme suit:
+    </p>
+
+    <pre>
+Le premier composant commence à tomber:
+|..@@@@.|
+|.......|
+|.......|
+|.......|
++-------+
+
+La rafale de vent pousse le composant vers la droite:
+|...@@@@|
+|.......|
+|.......|
+|.......|
++-------+
+
+Le composant tombe d'une unité:
+|...@@@@|
+|.......|
+|.......|
++-------+
+
+La rafale de vent pousse le composant vers la droite, mais rien ne se passe:
+|...@@@@|
+|.......|
+|.......|
++-------+
+
+Le composant tombe d'une unité:
+|...@@@@|
+|.......|
++-------+
+
+La rafale de vent pousse le composant vers la droite, mais rien ne se passe:
+|...@@@@|
+|.......|
++-------+
+
+Le composant tombe d'une unité:
+|...@@@@|
++-------+
+
+Le vent pousse le composant vers la gauche:
+|..@@@@.|
++-------+
+
+Le composant tombe d'une unité, ce qui le fait se stabiliser:
+|..####.|
++-------+
+
+Un nouveau composant commence à tomber:
+|...@...|
+|..@@@..|
+|...@...|
+|.......|
+|.......|
+|.......|
+|..####.|
++-------+
+    </pre>
+
+    <p>
+      Au moment où chacun des prochains composants commence à tomber, vous
+      verriez ceci:
+    </p>
+
+    <pre>
+        |..@....|
+|..@....|
+|..@....|
+|..@....|
+|.......|
+|.......|
+|.......|
+|..#....|
+|..#....|
+|####...|
+|..###..|
+|...#...|
+|..####.|
++-------+
+
+|..@@...|
+|..@@...|
+|.......|
+|.......|
+|.......|
+|....#..|
+|..#.#..|
+|..#.#..|
+|#####..|
+|..###..|
+|...#...|
+|..####.|
++-------+
+
+|..@@@@.|
+|.......|
+|.......|
+|.......|
+|....##.|
+|....##.|
+|....#..|
+|..#.#..|
+|..#.#..|
+|#####..|
+|..###..|
+|...#...|
+|..####.|
++-------+
+
+|...@...|
+|..@@@..|
+|...@...|
+|.......|
+|.......|
+|.......|
+|.####..|
+|....##.|
+|....##.|
+|....#..|
+|..#.#..|
+|..#.#..|
+|#####..|
+|..###..|
+|...#...|
+|..####.|
++-------+
+
+|....@..|
+|....@..|
+|..@@@..|
+|.......|
+|.......|
+|.......|
+|..#....|
+|.###...|
+|..#....|
+|.####..|
+|....##.|
+|....##.|
+|....#..|
+|..#.#..|
+|..#.#..|
+|#####..|
+|..###..|
+|...#...|
+|..####.|
++-------+
+
+|..@....|
+|..@....|
+|..@....|
+|..@....|
+|.......|
+|.......|
+|.......|
+|.....#.|
+|.....#.|
+|..####.|
+|.###...|
+|..#....|
+|.####..|
+|....##.|
+|....##.|
+|....#..|
+|..#.#..|
+|..#.#..|
+|#####..|
+|..###..|
+|...#...|
+|..####.|
++-------+
+
+|..@@...|
+|..@@...|
+|.......|
+|.......|
+|.......|
+|....#..|
+|....#..|
+|....##.|
+|....##.|
+|..####.|
+|.###...|
+|..#....|
+|.####..|
+|....##.|
+|....##.|
+|....#..|
+|..#.#..|
+|..#.#..|
+|#####..|
+|..###..|
+|...#...|
+|..####.|
++-------+
+
+|..@@@@.|
+|.......|
+|.......|
+|.......|
+|....#..|
+|....#..|
+|....##.|
+|##..##.|
+|######.|
+|.###...|
+|..#....|
+|.####..|
+|....##.|
+|....##.|
+|....#..|
+|..#.#..|
+|..#.#..|
+|#####..|
+|..###..|
+|...#...|
+|..####.|
++-------+
+    </pre>
+
+    <p>
+      Afin de prouver que votre simulation est précise, les drônes abeilles
+      veulent savoir quelle sera la hauteur de la ruche après que 1000
+      composants se soient stabilisés (mais avant que le 1001ème ne commence à
+      tomber). Dans cet exemple, la ruche de composants sera de 1520 unités de
+      haut.
+    </p>
+
+    <br />
+
+    <p>
+      Quelle sera la hauteur de la ruche après que 1000 composants se soient
+      stabilisés ?
     </p>
   </div>
 </article>
