@@ -14,6 +14,49 @@
   </p>
 
   <p>
+    Votre input est une liste de fichiers et dossiers, avec leur taille
+    respective. Par exemple:
+  </p>
+
+  <pre>
+    - nnafgstd/
+      - jsdrnd.nan (54037 bytes)
+      - hgyqmh.hwu (56622 bytes)
+      - fbzha/
+        - dlttnv.npm (13643 bytes)
+      - gbdjwrx/
+        - okbwcr.tdy (38252 bytes)
+        - rpsuzz.dbf (39175 bytes)
+        - qxqj/
+          - jjzq.jzq (8572 bytes)
+  </pre>
+
+  <p>
+    On considère la taille d'un dossier comme la somme de la taille de tous les
+    fichiers qu'il contient, y compris ceux des sous-dossiers. Donc un fichier
+    peut compter pour plusieurs dossiers.
+  </p>
+
+  <br />
+
+  <p>
+    Dans cet exemple, les dossiers qui occupent moins de 100,000 bytes sont:
+  </p>
+
+  <code>
+    - fbzha => 13643 bytes<br />
+    - gbdjwrx => 38252 + 39175 + 8572 = 85999 bytes<br />
+    - qxqj => 8572 bytes
+  </code>
+
+  <p>
+    Le total de l'espace occupé par les dossiers de moins de 100,000 bytes est
+    donc de 13643 + 85999 + 8572 = 108214 bytes.
+  </p>
+
+  <br />
+
+  <p>
     Entrez le total de l'espace occupé par les dossiers de moins de 100,000
     bytes.
   </p>
