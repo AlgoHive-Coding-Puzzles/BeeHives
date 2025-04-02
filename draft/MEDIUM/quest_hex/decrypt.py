@@ -43,7 +43,6 @@ class Decrypt:
             vote_count[self.determine_closest_color(self.lines[i])] += 1
             
         new_hexa = self.build_new_hexa(vote_count['red'], vote_count['green'], vote_count['blue'])
-        print(new_hexa)
         return self.convert_hexa_to_int(new_hexa)
         
     def build_new_hexa(self, r, g, b):
@@ -51,7 +50,6 @@ class Decrypt:
         r = r % 256
         g = g % 256
         b = b % 256
-        print(f'RGB: #{r:02X}{g:02X}{b:02X}')
         return f'#{r:02X}{g:02X}{b:02X}'
     
     def convert_hexa_to_int(self, hexa):
