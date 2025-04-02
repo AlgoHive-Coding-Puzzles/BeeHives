@@ -4,7 +4,7 @@ class Unveil:
 
     def run(self):
         max_length = 0
-        vowels = "aeiou"
+        vowels = "aeiouy"
         for line in self.lines:
             current_length = 0
             longest_vowel_seq = 0

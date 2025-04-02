@@ -4,7 +4,7 @@ class Decrypt:
 
     def run(self):
         total_vowels = 0
-        vowels = "aeiou"
+        vowels = "aeiouy"
         for line in self.lines:
             total_vowels += sum(1 for char in line if char in vowels)
         return total_vowels
