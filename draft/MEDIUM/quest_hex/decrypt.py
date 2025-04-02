@@ -21,7 +21,7 @@ class Decrypt:
         
         # Pure Blue (0, 0, 255)
         dist_to_blue = (r ** 2 + g ** 2 + (b - 255) ** 2) ** 0.5
-        
+                
         # Determine the closest color with priority for equidistant colors
         if dist_to_red <= dist_to_green and dist_to_red <= dist_to_blue:
             return 'red'
@@ -43,6 +43,7 @@ class Decrypt:
             vote_count[self.determine_closest_color(self.lines[i])] += 1
             
         new_hexa = self.build_new_hexa(vote_count['red'], vote_count['green'], vote_count['blue'])
+        print(new_hexa)
         return self.convert_hexa_to_int(new_hexa)
         
     def build_new_hexa(self, r, g, b):
@@ -50,6 +51,7 @@ class Decrypt:
         r = r % 256
         g = g % 256
         b = b % 256
+        print(f'RGB: #{r:02X}{g:02X}{b:02X}')
         return f'#{r:02X}{g:02X}{b:02X}'
     
     def convert_hexa_to_int(self, hexa):
