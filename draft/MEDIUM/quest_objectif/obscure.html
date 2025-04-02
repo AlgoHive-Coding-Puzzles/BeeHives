@@ -1,17 +1,24 @@
 <article>
-  <h2>--- Quest 6 Part 1 - Find All Pairs That Sum to Target ---</h2>
+  <h2>--- Quest 6 Part 1 - Target - Optimized ---</h2>
 
   <div>
-    <p>[ EXPLANATION ]</p>
     <p>
-      Dans cette étape, vous devez non seulement trouver les paires `(x, y)` où
-      `x + y = target`, mais aussi vous pouvez également mélanger les nombres
-      des deux colonnes pour former de nouvelles paires, mais n'ajoutez une
-      paire que si elle est unique. Également, vous devez vous assurer que
-      chaque paire est unique. Cela signifie que si une même paire apparaît
-      plusieurs fois (dans un ordre inversé ou dupliquée), elle ne doit être
-      comptée qu'une seule fois (par exemple, `(x, y)` et `(y, x)` sont
-      considérées comme la même paire).
+      Selon cette simulation, il vous restera encore beaucoup de barils à
+      remplir, et beaucoup de liquides dans les bassins. Vous décidez de
+      calculer comment optimiser le transport de miel et de biocarburant sans
+      les mélanger, en optimisant le remplissage. Pour cela, vous refaites une
+      simulation :
+    </p>
+    <p>
+      Vous cherchez d'abord les paires `(x, y)` où `x + y = objectif de
+      remplissage`, mais vous pouvez également mélanger les nombres des deux
+      colonnes pour former de nouvelles paires atteignant cet objectif.
+      ATTENTION : une fois qu'une association dans une même colonne a été
+      trouvée, elle ne peut pas être réutilisée. Chaque paire formée par colonne
+      doit être unique. Cela signifie que si une même paire apparaît plusieurs
+      fois (dans un ordre inversé ou dupliquée), elle ne doit être comptée
+      qu'une seule fois (par exemple, `(x, y)` et `(y, x)` sont considérées
+      comme la même paire).
     </p>
     <p><br /><br />Exemple:</p>
 
@@ -70,6 +77,9 @@
 
     <div>Sortie attendue : 4</div>
 
-    <p>[TEXT]. Affichez la somme totale des paires trouvées.</p>
+    <p>
+      Pour valider votre solution de transport optimisé, affichez la somme
+      totale des paires trouvées.
+    </p>
   </div>
 </article>
