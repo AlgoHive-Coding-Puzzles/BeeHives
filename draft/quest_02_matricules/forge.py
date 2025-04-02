@@ -10,12 +10,22 @@ class Forge:
     def run(self) -> list:
         random.seed(self.unique_id)
         lines = []
-        for _ in range(self.lines_count):
-            lines.append(self.generate_line(_))
+        unique_set = set()
+        # Fill the set with values from 1 to 9999
+        for i in range(1, 10000):
+            unique_set.add(i)
+            
+        # Pick a random sample of unique values from the set
+        for i in range(self.lines_count):
+            # Take a random  value from the set
+            line = random.choice(list(unique_set))
+            lines.append(str(line))
+            # Remove the value from the set to ensure uniqueness
+            unique_set.remove(line)
+            
         return lines
-    
-    def generate_line(self, index: int) -> str:
-        pass
+        
+        
     
 if __name__ == '__main__':
     lines_count = int(sys.argv[1])
