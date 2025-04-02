@@ -25,8 +25,9 @@ class Forge:
             
         return lines
         
+    def generate_line(self) -> str:
+        print("Generating line...")
         
-    
 if __name__ == '__main__':
     lines_count = int(sys.argv[1])
     unique_id = sys.argv[2]

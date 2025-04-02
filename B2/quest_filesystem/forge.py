@@ -110,6 +110,9 @@ class Forge:
         structure = self.generate_structure()
         lines = self.pretty_print(structure)
         return lines
+    
+    def generate_line(self) -> str:
+        print("Generating line...")
         
 
 if __name__ == '__main__':
