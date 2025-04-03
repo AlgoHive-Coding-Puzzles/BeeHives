@@ -91,7 +91,10 @@ class Forge:
         for root, contents in structure.items():
             print(f"{root}/")
             print_structure(contents, "  ")
-            
+    
+    def run(self) -> list:
+        random.seed(self.unique_id)
+        structure = self.generate_structure()
         # Return the lines as a list
         lines = []
         def collect_lines(structure, prefix=""):
@@ -104,15 +107,6 @@ class Forge:
                     collect_lines(value, prefix + "  ")
         collect_lines(structure)
         return lines
-    
-    def run(self) -> list:
-        random.seed(self.unique_id)
-        structure = self.generate_structure()
-        lines = self.pretty_print(structure)
-        return lines
-    
-    def generate_line(self) -> str:
-        print("Generating line...")
         
 
 if __name__ == '__main__':
