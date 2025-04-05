@@ -24,7 +24,7 @@ class Unveil:
                 spiral += ["NW"] * (length)
                 spiral += ["N"] * (length)
                 spiral += ["NE"] * (length)
-                print(spiral)
+                # print(spiral)
                 return spiral
             
         # (x, y)
@@ -88,7 +88,7 @@ class Unveil:
                         score -= 1
                     moved = True
                     path_length += 1
-                    display_grid()
+                    # display_grid()
                 else:
                     break
             if not moved:
