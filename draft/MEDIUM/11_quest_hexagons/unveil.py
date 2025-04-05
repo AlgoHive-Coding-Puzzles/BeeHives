@@ -69,6 +69,7 @@ class Unveil:
         while True:
             moved = False
             directions = generate_spiral(spiral_length)
+            direction_index = 0
             for _ in range(len(directions)):
                 direction = directions[direction_index]
                 direction_index = (direction_index + 1) % len(directions)
