@@ -7,7 +7,6 @@ class Decrypt:
         grid = [line.split() for line in self.lines[:-1]]
         movements_line = self.lines[-1].strip()
         movements = movements_line.split(":")[1].strip().split(", ")
-        print(movements)
 
         # Find the starting position ('X')
         start_x, start_y = None, None
